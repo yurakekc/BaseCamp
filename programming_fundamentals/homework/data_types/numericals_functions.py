@@ -20,9 +20,21 @@ def decimal_to_binary(n):
         n (int) - integer number to convert.
 
     Returns:
-        int - integer number of binary representation for enterd n.
+        int - integer number of binary representation for entered n.
     """
-    pass
+
+    # res = ''
+    # while n > 0:
+    #     res += str(n & 1)
+    #     n = n >> 1
+    # return res[::-1]
+    if not isinstance(n, int) or n < 0:
+        raise TypeError('Input must be a non-negitive, whole integer.')
+    stack = []
+    while n > 0:
+        stack.insert(0, str(n % 2))
+        n = n // 2
+    return ''.join(stack)
 
 
 def binary_to_decimal(n):
@@ -36,7 +48,10 @@ def binary_to_decimal(n):
     Returns:
         int - decimal representation of a proper number.
     """
-    pass
+    decimal = 0
+    for digit in str(n):
+        decimal = decimal * 2 + int(digit)
+    return decimal
 
 
 def storage(something_should_be_here):
